@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generated Resume</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f6f8fc;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .resume-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Header */
+    .header h1 {
+      color: #b20000;
+      margin: 0;
+    }
+    .header h3 {
+      color: #a66;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+
+    .summary {
+      margin-top: 15px;
+      font-size: 0.95rem;
+    }
+
+    /* Two-column layout */
+    .content {
+      display: flex;
+      margin-top: 30px;
+      gap: 40px;
+    }
+
+    .left {
+      width: 35%;
+    }
+
+    .right {
+      width: 65%;
+    }
+
+    /* Section headings with icons */
+    .section-title {
+      display: flex;
+      align-items: center;
+      color: #b20000;
+      font-weight: 700;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .section-title::before {
+      content: "⬤";
+      font-size: 0.8rem;
+      margin-right: 8px;
+      color: #b20000;
+    }
+
+    /* Contact and Skills sections */
+    .contact p, .skills li {
+      margin: 6px 0;
+      font-size: 0.9rem;
+    }
+
+    .skills ul {
+      padding-left: 20px;
+    }
+
+    .skills li {
+      list-style: disc;
+    }
+
+    /* Work/Education sections */
+    .work-item {
+      margin-bottom: 15px;
+    }
+
+    .work-item h4 {
+      margin: 5px 0;
+      color: #b20000;
+      font-weight: 600;
+    }
+
+    .work-item p {
+      margin: 3px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Download button */
+    .btn-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      background-color: #b20000;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #800000;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container" id="resume">
+    <div class="header">
+      <h1 id="rName">John Smith</h1>
+      <h3 id="rTitle">Senior Sales Associate</h3>
+      <p class="summary" id="rSummary">
+        Highly motivated Sales Associate with extensive customer service and sales experience.
+      </p>
+    </div>
+
+    <div class="content">
+      <div class="left">
+        <div class="contact">
+          <div class="section-title">Contact</div>
+          <p><strong>Address:</strong> <span id="rAddress">New York, 1007</span></p>
+          <p><strong>Phone:</strong> <span id="rPhone">(555) 432-1000</span></p>
+          <p><strong>Email:</strong> <span id="rEmail">resume@example.com</span></p>
+        </div>
+
+        <div class="skills">
+          <div class="section-title">Skills</div>
+          <ul id="rSkills">
+            <li>Guest services</li>
+            <li>Inventory control</li>
+            <li>Merchandising expertise</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="section-title">Work History</div>
+        <div id="rExperience">
+          <div class="work-item">
+            <h4>Senior Sales Associate</h4>
+            <p><em>Bed Bath & Beyond, Inc., San Francisco, CA</em></p>
+            <ul>
+              <li>Applied security and loss prevention training.</li>
+              <li>Trained and developed team associates.</li>
+              <li>Maintained organized merchandise displays.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Education</div>
+        <p id="rEducation">Bachelor of Arts: Business Administration — San Francisco State University, 2013</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <button class="btn" id="downloadBtn">⬇️ Download Resume (PDF)</button>
+  </div>
+
+  <!-- HTML2PDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("resumeData"));
+    if (data) {
+      document.getElementById("rName").innerText = data.name;
+      document.getElementById("rTitle").innerText = data.title;
+      document.getElementById("rAddress").innerText = data.address;
+      document.getElementById("rPhone").innerText = data.phone;
+      document.getElementById("rEmail").innerText = data.email;
+      document.getElementById("rSummary").innerText = data.summary;
+      document.getElementById("rExperience").innerText = data.experience;
+      document.getElementById("rEducation").innerText = data.education;
+
+      const skills = data.skills.split(",");
+      document.getElementById("rSkills").innerHTML = skills.map(s => `<li>${s.trim()}</li>`).join("");
+    }
+
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const element = document.getElementById("resume");
+      const opt = {
+        margin: 0.3,
+        filename: `${data.name || "Resume"}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    });
+  </script>
+</body>
+</html>

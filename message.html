@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Message Received</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #eef3f8;
+        text-align: center;
+        padding: 40px;
+    }
+    .box {
+        background: white;
+        width: 60%;
+        margin: auto;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Message From the User</h2>
+
+<div class="box">
+
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Subject:</strong> <span id="subject"></span></p>
+    <p><strong>Message:</strong></p>
+    <p id="message"></p>
+
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById("name").innerText = urlParams.get("name");
+    document.getElementById("email").innerText = urlParams.get("email");
+    document.getElementById("subject").innerText = urlParams.get("subject");
+    document.getElementById("message").innerText = urlParams.get("message");
+</script>
+
+</body>
+</html>

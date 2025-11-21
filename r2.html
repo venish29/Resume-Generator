@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f6f8fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #b20000;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background-color: #b20000;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #800000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Resume Builder</h1>
+
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="John Smith">
+
+    <label>Job Title</label>
+    <input type="text" id="title" placeholder="Senior Sales Associate">
+
+    <label>Address</label>
+    <input type="text" id="address" placeholder="New York, 1007">
+
+    <label>Phone</label>
+    <input type="text" id="phone" placeholder="(555) 432-1000">
+
+    <label>Email</label>
+    <input type="text" id="email" placeholder="resume@example.com">
+
+    <label>Profile Summary</label>
+    <textarea id="summary" rows="3" placeholder="Write a short professional summary..."></textarea>
+
+    <label>Skills (comma separated)</label>
+    <input type="text" id="skills" placeholder="Guest services, Inventory control, Loss prevention">
+
+    <label>Work Experience</label>
+    <textarea id="experience" rows="4" placeholder="Your work history..."></textarea>
+
+    <label>Education</label>
+    <textarea id="education" rows="3" placeholder="Your educational background..."></textarea>
+
+    <button onclick="saveAndGo()">Generate Resume</button>
+  </div>
+
+  <script>
+    function saveAndGo() {
+      const data = {
+        name: document.getElementById("name").value,
+        title: document.getElementById("title").value,
+        address: document.getElementById("address").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        summary: document.getElementById("summary").value,
+        skills: document.getElementById("skills").value,
+        experience: document.getElementById("experience").value,
+        education: document.getElementById("education").value
+      };
+      localStorage.setItem("resumeData", JSON.stringify(data));
+      window.location.href = "r2r.html";
+    }
+  </script>
+</body>
+</html>

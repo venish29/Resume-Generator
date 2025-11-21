@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Resume Builder</h1>
+
+    <label>Full Name</label>
+    <input type="text" id="name">
+
+    <label>Job Title</label>
+    <input type="text" id="title">
+
+    <label>Address</label>
+    <input type="text" id="address">
+
+    <label>Phone</label>
+    <input type="text" id="phone">
+
+    <label>Email</label>
+    <input type="text" id="email">
+
+    <label>Profile Summary</label>
+    <textarea id="summary"></textarea>
+
+    <label>Skills (comma separated)</label>
+    <input type="text" id="skills">
+
+    <label>Work Experience</label>
+    <textarea id="experience"></textarea>
+
+    <label>Education</label>
+    <textarea id="education"></textarea>
+
+    <button onclick="saveAndGo()">Generate Resume</button>
+  </div>
+
+  <script>
+    function saveAndGo() {
+      const data = {
+        name: document.getElementById("name").value,
+        title: document.getElementById("title").value,
+        address: document.getElementById("address").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        summary: document.getElementById("summary").value,
+        skills: document.getElementById("skills").value,
+        experience: document.getElementById("experience").value,
+        education: document.getElementById("education").value
+      };
+
+      // Save data to localStorage
+      localStorage.setItem("resumeData", JSON.stringify(data));
+
+      // Redirect to resume page
+      window.location.href = "resume.html";
+    }
+  </script>
+</body>
+</html>

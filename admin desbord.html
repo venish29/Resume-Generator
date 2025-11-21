@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 1em 2em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .dashboard-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 30px;
+    }
+
+    .stat-box {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 30%;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .stat-box h2 {
+      margin: 0 0 10px 0;
+      font-size: 2.5em;
+    }
+
+    .stat-box p {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section h3 {
+      color: #343a40;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f7f7f7;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    nav {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      color: #f8f9fa;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <a href="manage-users.html">Manage Users</a>
+      <a href="setting.html">Settings</a>
+      <a href="index.html">Logout</a>
+    </nav>
+  </header>
+
+  <div class="dashboard-container">
+    <div class="stats">
+      <div class="stat-box">
+        <h2>150</h2>
+        <p>Total Users</p>
+      </div>
+      <div class="stat-box">
+        <h2>320</h2>
+        <p>Resumes Generated</p>
+      </div>
+      <div class="stat-box">
+        <h2>12</h2>
+        <p>New Users (Last 7 days)</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Recent User Registrations</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Registered On</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>vraj </td>
+            <td>vraj@gmail.com</td>
+            <td>2025-08-28</td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td>Smith</td>
+            <td>smith@gmail.com</td>
+            <td>2025-08-27</td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td>vipul</td>
+            <td>vipul@gmail.com</td>
+            <td>2025-08-26</td>
+            <td>Inactive</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Quick Links</h3>
+      <a href="manage-users.html" class="btn">Manage Users</a>
+      <a href="message.html" class="btn">Messages</a>    
+      <a href="setting.html" class="btn">System Settings</a>
+    </div>
+  </div>
+
+</body>
+</html>
